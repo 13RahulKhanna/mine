@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function getRandomPosition(max) {
+            return Math.floor(Math.random() * max) + 'px';
+        }
+
+        function showAlert(message) {
+            const alertBox = document.getElementById('alert-box');
+            const alertMessage = document.getElementById('alert-message');
+            alertMessage.textContent = message;
+            alertBox.style.top = getRandomPosition(window.innerHeight - alertBox.clientHeight);
+            alertBox.style.left = getRandomPosition(window.innerWidth - alertBox.clientWidth);
+            alertBox.style.display = 'block';
+        }
+
+        function checkAnswer() {
+            const answer = document.getElementById('alert-answer').value.toLowerCase();
+            if (answer === 'boyfriend' || answer === 'boy friend') {
+                window.location.href = 'redirect.html';
+            } else if (answer === 'friend' || answer === 'friends') {
+                showAlert("We won't be only friends. What am I to you?");
+            } else {
+                showAlert('Nope! What am I to you?');
+            }
+        }
+
+        window.onload = function() {
+            showAlert('What am I to you?');
+        };
+    </script>
+</head>
+<body>
+    <div id="alert-box" class="alert-box">
+        <p id="alert-message"></p>
+        <input type="text" id="alert-answer" placeholder="Type your answer here...">
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+</body>
+</html>

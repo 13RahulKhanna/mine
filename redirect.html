@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message</title>
+    <style>
+        body {
+            background-color: #ffcccb;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden; /* Ensure images don’t overflow */
+        }
+
+        .message-box {
+            background-color: white;
+            border: 2px solid #ff0066;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: absolute; /* Position at the top */
+            top: 20px; /* Space from top */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1; /* Ensure message box is above images */
+            width: 80%; /* Adjust width as needed */
+        }
+
+        .message-box p {
+            color: #ff0066;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .additional-box {
+            background-color: white;
+            border: 2px solid #ff0066;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: absolute; /* Position at the bottom */
+            bottom: 20px; /* Space from bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1; /* Ensure message box is above images */
+            width: 80%; /* Adjust width as needed */
+        }
+
+        .additional-box p {
+            color: #ff0066;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .image {
+            position: absolute;
+            height: auto;
+            z-index: 0; /* Ensure images are behind message boxes */
+        }
+
+        .image-left {
+            left: 0;
+            width: 33%;
+        }
+
+        .image-center {
+            left: 33%;
+            width: 33%;
+        }
+
+        .image-right {
+            right: 0;
+            width: 33%;
+        }
+
+        /* Alert box styles */
+        .alert-box {
+            display: none;
+            position: fixed;
+            background-color: white;
+            border: 2px solid #ff0066;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 2; /* Ensure alert box is above everything else */
+            width: 300px;
+            left: 50%;
+            top: 80%; /* Move down 70% from the top */
+            transform: translateX(-50%);
+            margin-top: -100px; /* Adjust to center the box vertically at 70% */
+        }
+
+        .alert-box p {
+            color: #ff0066;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .alert-box input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .alert-box button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff0066;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .alert-box button:disabled {
+            background-color: #e6e6e6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <img src="charizard.png" alt="Charizard" class="image image-left">
+    <img src="distance.png" alt="Distance" class="image image-center">
+    <img src="squirtle.jpeg" alt="Squirtle" class="image image-right">
+    
+    <div class="message-box">
+        <p>Listen up you piddu you would only be mine no one else's</p>
+    </div>
+
+    <div class="additional-box">
+        <p>Jyada boli na to ghr se utha lunga</p>
+    </div>
+
+    <!-- Alert Box -->
+    <div id="alert-box" class="alert-box">
+        <p>Smjhi?</p>
+        <input type="checkbox" id="confirm-checkbox">
+        <label for="confirm-checkbox"></label>
+        <br>
+        <button id="continue-button" disabled>Continue</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('alert-box').style.display = 'block';
+
+            const checkbox = document.getElementById('confirm-checkbox');
+            const continueButton = document.getElementById('continue-button');
+
+            checkbox.addEventListener('change', function() {
+                if (checkbox.checked) {
+                    continueButton.disabled = false;
+                } else {
+                    continueButton.disabled = true;
+                }
+            });
+
+            continueButton.addEventListener('click', function() {
+                window.location.href = 'redirect2.html';
+            });
+        };
+    </script>
+</body>
+</html>

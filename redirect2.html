@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Date</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background-color: white;
+            border: 2px solid #ff0066;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            width: 300px;
+            transition: background-color 0.3s;
+        }
+
+        .box:hover {
+            background-color: #ffebeb;
+        }
+
+        .box p {
+            color: #ff0066;
+            font-size: 18px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="time-box" class="box">
+        <p>Touch Me!</p>
+    </div>
+
+    <script>
+        document.getElementById('time-box').addEventListener('click', function() {
+            const now = new Date();
+            const dateString = now.toLocaleString();
+            const message = `Madam, I want you and this is just a small effort for us 💖\n\nWe are officially girl friend and boy friend from now on:\n${dateString}`;
+
+            // Display the current date and time
+            this.innerHTML = `<p>We are officially girl friend and boy friend from now on:</p><p>${dateString}</p>`;
+
+            // Create a text file with the message and current time and date
+            const blob = new Blob([message], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'piddu.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
